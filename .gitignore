@@ -1,0 +1,13 @@
+# raw dataset
+/data/petfinder-pawpularity-score/train
+/data/petfinder-pawpularity-score/test
+
+# cache
+*.pyc
+
+# model checkpoints
+*.ckpt
+*.pth
+
+# personal
+personal*
