@@ -40,10 +40,10 @@ class Hybrid_Conv2d(nn.Module):
         self.padding = padding
         self.num_cov = num_cov # number of covariates
 
-        self.W_0 = nn.Parameter(torch.randn(kernel_size), requires_grad=True)
+        self.W_0 = nn.Parameter(torch.randn(kernel_size), requires_grad=True).to('cuda:0')
         self.W = []
         for r in range(self.num_cov):
-            W_r = nn.Parameter(torch.randn(kernel_size), requires_grad=True)
+            W_r = nn.Parameter(torch.randn(kernel_size), requires_grad=True).to('cuda:0')
             self.W.append(W_r)        
         
         self._initialize_weights()
@@ -62,7 +62,7 @@ class Hybrid_Conv2d(nn.Module):
         
         outputs = []
         for i in range(cov.shape[0]): # for every image x[i]
-            res = torch.zeros_like(self.W_0)
+            res = torch.zeros_like(self.W_0).to('cuda:0')
             for j in range(cov.shape[1]): # for j-th cov of x[i]
                 # element-wise multiply the W_j * cov_ij then take sum of these products across the covariates of that one image
                 res = res + ( torch.mul(self.W[j], cov[i][j]) ).to('cuda:0') # cov[i] is an array with shape (r,); cov[i][j] is either 1 or 0
