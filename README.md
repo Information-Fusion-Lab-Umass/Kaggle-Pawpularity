@@ -5,6 +5,12 @@ Kaggle contest [link](https://www.kaggle.com/c/petfinder-pawpularity-score)
 
 Attempt to use the shortfused hybrid conv layer to improve a baseline VGG model with multi-modal inputs
 
+### Usage
+
+Repo is located on gypsum at `/mnt/nfs/work1/mfiterau/genglinliu/Kaggle-Pawpularity`
+
+Use any gpu node, the main script is `src/main.py`
+
 ### Notes:
 After setting the correct data directory, run `main.py` using a TitanX gpu on gypsum - this works without error.
 
